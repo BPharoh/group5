@@ -10,8 +10,11 @@ jobs:
 
     steps:
     - name: Checkout code
+      
       run: echo "Checking out code..."
-
+    - name: Run validation script
+      run: bash validate.sh
+      id: validation
     - name: Echo validation status
       run: |
         if [ "${{ steps.validation.outputs.status }}" = "0" ]; then
