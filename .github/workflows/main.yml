@@ -9,21 +9,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      
-      run: echo "Checking out code..."
-    - name: Run validation script
-      run: bash validate.sh
-      id: validation
-    - name: Echo validation status
-      run: |
-        if [ "${{ steps.validation.outputs.status }}" = "0" ]; then
-          echo "Validation successful!"
-        else
-          echo "Validation failed: ${{ steps.validation.outputs.reason }}"
-          echo "Do you want to continue with the push? (y/n)"
-          read -r continue
-          if [ "$continue" = "n" ]; then
-            exit 1
-          fi
-      if: steps.validation.outputs.status != null
+      - name: Checkout code
+
+        run: echo "Checking out code..."
+      - name: Run validation script
+        run: bash validate.sh
+        id: validation
+      - name: Echo validation status
+        run: |
+          if [ "${{ steps.validation.outputs.status }}" = "0" ]; then
+            echo "Validation successful!"
+            fi
+          else
+            echo "Validation failed: ${{ steps.validation.outputs.reason }}"
+            echo "Do you want to continue with the push? (y/n)"
+            read -r continue
+            if [ "$continue" = "n" ]; then
+              exit 1
+            fi
