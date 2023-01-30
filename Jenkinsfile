@@ -1,9 +1,8 @@
 pipeline {
   agent {
-    node {
+      node {
       label 'node'
     }
-
   }
   stages {
     stage('Initialise') {
@@ -32,7 +31,7 @@ pipeline {
 
     stage('status') {
       steps {
-        sh 'Hurray !!! Nothing runnned successfully ......'
+        sh 'echo Hurray !!! Nothing runnned successfully ......'
       }
     }
 
